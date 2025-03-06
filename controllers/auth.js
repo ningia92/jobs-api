@@ -1,7 +1,6 @@
 import User from '../models/User.js'
 import { StatusCodes } from 'http-status-codes'
-import BadRequestError from '../errors/bad-request.js'
-import UnauthenticatedError from '../errors/unauthenticated.js'
+import { BadRequestError, UnauthenticatedError } from '../errors/index.js'
 
 const register = async (req, res) => {
   const user = await User.create({ ...req.body })
