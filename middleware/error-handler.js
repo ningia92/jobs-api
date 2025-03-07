@@ -1,7 +1,7 @@
 // import { CustomAPIError } from '../errors/index.js'
 import { StatusCodes } from 'http-status-codes'
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
   let customError = {
     // set default
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
@@ -18,7 +18,7 @@ const errorHandler = (err, req, res, next) => {
       .join(', ')
     customError.statusCode = StatusCodes.BAD_REQUEST
   }
-  
+
   if (err.name === 'CastError') {
     customError.msg = `No item found with id ${err.value}`
     customError.statusCode = StatusCodes.NOT_FOUND

@@ -1,4 +1,4 @@
-import NotFoundError from "../errors/not-found.js"
+import NotFoundError from '../errors/not-found.js'
 
 const notFound = (req, res) => {
   const err = new NotFoundError('Route does not exist')
