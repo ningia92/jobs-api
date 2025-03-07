@@ -51,7 +51,6 @@ app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
-
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 

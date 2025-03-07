@@ -45,7 +45,7 @@ paths:
             schema:
               $ref: '#/components/schemas/LoginUserRequest'
             example:
-              email: susan@gmail.com
+              email: alice@gmail.com
               password: secret
         required: true
       responses:
@@ -170,7 +170,7 @@ components:
         password:
           type: string
       example:
-        email: susan@gmail.com
+        email: alice@gmail.com
         password: secret
     CreateJobRequest:
       title: CreateJobRequest
