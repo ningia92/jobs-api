@@ -38,8 +38,6 @@ app.use(cors())
 // data sanitization to cleanse user input and prevent malicious data from reaching your application’s logic.express-mongo-sanitize and xss-clean sanitize data and defend against NoSQL injection and cross-site scripting.
 app.use(mongoSanitize())
 app.use(xss())
-app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware)
 
 // routes
 app.get('/', (req, res) => {
@@ -47,6 +45,9 @@ app.get('/', (req, res) => {
 })
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
+
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
 
 const PORT = process.env.PORT || 3000
 
