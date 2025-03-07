@@ -20,6 +20,10 @@ import connectDB from './db/connect.js'
 // routers
 import authRouter from './routes/auth.js'
 import jobsRouter from './routes/jobs.js'
+// swagger docs
+import swaggerUI from 'swagger-ui-express'
+import YAML from 'yamljs'
+const swaggerDocument = YAML.load('./swagger.yaml')
 
 // If you are behind a proxy/load balancer (usually the case with most hosting services, e.g. Heroku, AWS ELB, Nginx, Cloudflare, etc.), the IP address of the request might be the IP of the load balancer/reverse proxy (making the rate limiter effectively a global one and blocking all requests once the limit is reached) or undefined. To solve:
 app.set('trust proxy', 1 /* number of proxies between user and server */)
@@ -41,10 +45,12 @@ app.use(xss())
 
 // routes
 app.get('/', (req, res) => {
-  res.send('Jobs API')
+  res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>')
 })
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)

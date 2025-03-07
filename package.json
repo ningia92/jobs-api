@@ -24,7 +24,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.0",
     "rate-limiter": "^0.2.0",
-    "xss": "^1.0.15"
+    "swagger-ui-express": "^5.0.1",
+    "xss": "^1.0.15",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
