@@ -42,7 +42,7 @@ app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
 // routes
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Jobs API')
 })
 app.use('/api/v1/auth', authRouter)
