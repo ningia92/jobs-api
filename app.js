@@ -1,11 +1,3 @@
-import dotenv from 'dotenv'
-dotenv.config()
-// extra security packages
-import helmet from 'helmet'
-import cors from 'cors'
-import mongoSanitize from 'express-mongo-sanitize'
-import { xss } from 'express-xss-sanitizer'
-import rateLimit from 'express-rate-limit'
 // express app
 import express from 'express'
 const app = express()
@@ -20,6 +12,12 @@ import connectDB from './db/connect.js'
 // routers
 import authRouter from './routes/auth.js'
 import jobsRouter from './routes/jobs.js'
+// extra security packages
+import helmet from 'helmet'
+import cors from 'cors'
+import mongoSanitize from 'express-mongo-sanitize'
+import { xss } from 'express-xss-sanitizer'
+import rateLimit from 'express-rate-limit'
 // swagger docs
 import swaggerUI from 'swagger-ui-express'
 import YAML from 'yamljs'
@@ -59,7 +57,7 @@ const PORT = process.env.PORT || 3000
 const start = async () => {
   try {
     // connect to db
-    await connectDB(process.env.MONGO_URI)
+    await connectDB(`${String(process.env.MONGO_URI)}`)
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}...`)
     })
