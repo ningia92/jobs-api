@@ -1,4 +1,3 @@
-// import { CustomAPIError } from '../errors/index.js'
 import { StatusCodes } from 'http-status-codes'
 
 const errorHandler = (err, req, res) => {
@@ -7,10 +6,6 @@ const errorHandler = (err, req, res) => {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     msg: err.message || 'Something went wrong, try again'
   }
-
-  // if (err instanceof CustomAPIError) {
-  //   return res.status(err.statusCode).json({ msg: err.message })
-  // }
 
   if (err.name === 'ValidationError') {
     customError.msg = Object.values(err.errors)
@@ -29,7 +24,6 @@ const errorHandler = (err, req, res) => {
     customError.statusCode = StatusCodes.BAD_REQUEST
   }
 
-  // return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err })
   return res.status(customError.statusCode).json({ msg: customError.msg })
 }
 

@@ -1,3 +1,7 @@
+## Jobs API
+
+This application, called "Jobs API", is a RESTful API, developed with Express and MongoDB, that handles operations related to authentication and job posting. It integrates robust security middlewares (helmet, cors, mongoSanitize, xss) and traffic limits (rate limiting) to protect the application from common attacks. It also provides interactive documentation via Swagger UI to facilitate development and integration with the service.
+
 #### Setup
 
 ```bash
